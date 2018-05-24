@@ -1,0 +1,11 @@
+django
+djangorestframework
+markdown
+django-filter
+django-python3-ldap
+requests
+psycopg2
+coreapi
+#potentially temporary
+pygments
+simplecrypt
