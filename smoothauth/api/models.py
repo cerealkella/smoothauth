@@ -70,7 +70,7 @@ class ConnectLog(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    pw = models.CharField(max_length=120, blank=True)
+    pw = models.CharField(max_length=180, blank=True)
     badge = models.CharField(max_length=10, blank=True)
     location = models.CharField(max_length=30, blank=True)
     desktop = models.CharField(max_length=40, blank=True)
@@ -81,7 +81,7 @@ class Profile(models.Model):
     class Meta:
         ordering = ('id',)
 
-    def save(self):
+    def save(self, **kwargs):
         if self.id:
             # editing existing
             # process raw badge hex into id and hash with pw
@@ -96,12 +96,6 @@ class Profile(models.Model):
             # self.created_date = datetime.now()
             pass
         super(Profile, self).save()
-
-
-'''
-Need to comment these decorators when setting up server and performing
-initial sync and superuser creation.
-'''
 
 
 @receiver(post_save, sender=User)
