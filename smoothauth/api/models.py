@@ -98,6 +98,12 @@ class Profile(models.Model):
         super(Profile, self).save()
 
 
+'''
+Need to comment these decorators when setting up server and performing
+initial sync and superuser creation.
+'''
+
+
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
